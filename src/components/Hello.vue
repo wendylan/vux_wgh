@@ -8,12 +8,12 @@ const baseList = [
         url: 'javascript:',
         img: 'https://static.vux.li/demo/1.jpg',
         title: '送你一朵花'
-    }, 
+    },
     {
         url: 'javascript:',
         img: 'https://static.vux.li/demo/2.jpg',
         title: '送你一辆车'
-    }, 
+    },
     {
         url: 'javascript:',
         img: 'https://static.vux.li/demo/3.jpg',
@@ -28,6 +28,7 @@ const urlList = baseList.map((item, index) => ({
 }))
 
 export default {
+    name: 'Hello',
     data () {
         return {
             index : 0,

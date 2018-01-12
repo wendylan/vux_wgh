@@ -1,15 +1,59 @@
 import Vue from 'vue'
-import Router from 'vue-router'
-import Hello from '@/components/Hello'
+import VueRouter from 'vue-router'
 
-Vue.use(Router)
+import App from '../App'
+import Home from '../components/HelloFromVux.vue'
+import Hello from '../components/Hello.vue'
+import Search from '../components/Search.vue'
+import news from '../components/news.vue'
+import my from '../components/my.vue'
+import newsDetail from '../components/news_detail.vue'
+import myDetail from '../components/my_detail.vue'
 
-export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'Hello',
-      component: Hello
-    }
-  ]
+Vue.use(VueRouter);
+
+const routes = [{
+	path: '/',
+	component: App,
+	children : [
+		{
+			path : '/Hello',
+            name: 'Hello',
+			component : Hello
+		},
+		{
+			path : '/Home',
+			component : Home
+		},
+		{
+			path : '/show',
+			component : news
+		},
+		{
+			path : '/search',
+			component : Search
+		},
+		{
+			path : '/my',
+			component : my
+		},
+		{
+			path : '/news',
+			component : news
+		},
+		{
+			path : '/news_detail',
+			component : newsDetail
+		},
+		{
+			path : '/my_detail',
+			component : myDetail
+		}
+	]
+}]
+
+const router = new VueRouter({
+    routes: routes
 })
+
+export default router;
