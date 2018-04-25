@@ -13,6 +13,16 @@
 				msg : 'this is a test',
 			}
 		},
+		created(){
+			// var url = this.HOME+"/v2/movie/in_theaters";
+			var url = this.HOME+"/v2/movie/new_movies";
+			this.$axios.get(url).then(res=>{
+				console.log(res.data);
+			}).catch(error=>{
+				console.log(1111111111);
+				console.log(error);
+			});
+		}
 	}
 </script>
 <template>

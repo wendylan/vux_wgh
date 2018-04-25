@@ -66,6 +66,12 @@
 			GridItem,
 			XHeader,
 			Actionsheet,
+		},
+		created(){
+			var url = this.HOME+"/v2/movie/in_theaters";
+			this.$axios.get(url).then(res=>{
+				console.log(res.data);
+			}).catch();
 		}
 	}
 </script>

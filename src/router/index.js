@@ -6,6 +6,7 @@ import Home from '../components/HelloFromVux.vue'
 import Hello from '../components/Hello.vue'
 import Search from '../components/Search.vue'
 import news from '../components/news.vue'
+import show from '../components/show.vue'
 import my from '../components/my.vue'
 import newsDetail from '../components/news_detail.vue'
 import myDetail from '../components/my_detail.vue'
@@ -27,7 +28,7 @@ const routes = [{
 		},
 		{
 			path : '/show',
-			component : news
+			component : show
 		},
 		{
 			path : '/search',
