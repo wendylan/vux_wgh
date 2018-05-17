@@ -8,7 +8,7 @@ import router from './router/index.js'
 FastClick.attach(document.body)
 
 Vue.prototype.$axios = Axios;
-Vue.prototype.HOME = '/api';
+Vue.prototype.HOME = 'https://api.douban.com';
 Vue.config.productionTip = false
 
 new Vue({
