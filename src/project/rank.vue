@@ -18,10 +18,14 @@
                 showMenus : false,
                 nowIndex: 0,
                 rankTop250 : [],
+                inTheaterArr: [],
+                soonData: [],
             }
         },
         created(){
             this.getInitData();
+            this.getTheater();
+            this.getSoonData();
         },
         methods:{
             getInitData(){
@@ -29,6 +33,24 @@
                 this.$axios.get(url).then(res=>{
                     console.log(res.data);
                     this.rankTop250 = res.data.subjects;
+                }).catch(res => {
+                    console.log(res);
+                });
+            },
+            getTheater(){
+                var url = this.HOME+"/v2/movie/in_theaters";
+                this.$axios.get(url).then(res => {
+                    console.log(res);
+                    this.inTheaterArr = res.data.subjects;
+                }).catch(res => {
+                    console.log(res);
+                });
+            },
+            getSoonData(){
+                var url = this.HOME+"/v2/movie/coming_soon";
+                this.$axios.get(url).then(res => {
+                    console.log(res);
+                    this.soonData = res.data.subjects;
                 }).catch(res => {
                     console.log(res);
                 });
@@ -57,20 +79,32 @@
             <tab-item @on-item-click="onItemClick">正在热映</tab-item>
             <tab-item @on-item-click="onItemClick">即将上映</tab-item>
         </tab>
-        <div v-if="nowIndex==0">
-            <card v-for="item of rankTop250" :key="item.id" style="width:40%;display:inline-block;">
-                <img slot="header" :src="item.images.small" >
+        <div v-if="nowIndex==0" style="text-align:center;">
+            <card v-for="item of rankTop250" :key="item.id" style="width:45%;display:inline-block;text-align:center;margin-right:5px;margin-left:8px;">
+                <img slot="header" :src="item.images.small" style="width:100%;display:inline-block;">
                 <div slot="content" class="card-padding">
                     <b>{{ item.title }}</b>
                     <p style="color:#999;font-size:12px;">{{item.year}} <span>评分：{{item.rating.average}}</span></p>
                 </div>
             </card>
         </div>
-        <div v-if="nowIndex==1">
-            正在热映
+        <div v-if="nowIndex==1" style="text-align:center;">
+            <card v-for="item of inTheaterArr" :key="item.id" style="width:45%;display:inline-block;text-align:center;margin-right:5px;margin-left:8px;">
+                <img slot="header" :src="item.images.small" style="width:100%;display:inline-block;">
+                <div slot="content" class="card-padding">
+                    <b>{{ item.title }}</b>
+                    <p style="color:#999;font-size:12px;">{{item.year}} <span>评分：{{item.rating.average}}</span></p>
+                </div>
+            </card>
         </div>
-        <div v-if="nowIndex==2">
-            即将上映
+        <div v-if="nowIndex==2" style="text-align:center;">
+            <card v-for="item of soonData" :key="item.id" style="width:45%;display:inline-block;text-align:center;margin-right:5px;margin-left:8px;">
+                <img slot="header" :src="item.images.small" style="width:100%;display:inline-block;">
+                <div slot="content" class="card-padding">
+                    <b>{{ item.title }}</b>
+                    <p style="color:#999;font-size:12px;">{{item.year}} <span>评分：{{item.rating.average}}</span></p>
+                </div>
+            </card>
         </div>
     </div>
 </template>
