@@ -1,5 +1,5 @@
 <script>
-	import foot from './components/Foot.vue';
+	import foot from './project/foot.vue';
 	export default {
 		data() {
 			return {
